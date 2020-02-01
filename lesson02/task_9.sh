@@ -5,4 +5,4 @@
 
 mkdir -p 20{15..20}/{01..12}
 
-for i in {2015..2020}; do for j in {01..12}; do touch $i/$j/$i13$j.txt; done; done
+for i in {2015..2020}; do for j in {01..12}; do touch /home/radif/test/$i/$j/$i$j.txt; done; done
