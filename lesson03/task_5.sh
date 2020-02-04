@@ -16,3 +16,4 @@ sudo passwd user3;
 grep developer /etc/group; # проверяем группу, видим там user1, user2, user3, GID 1001
 mkdir developer;
 chgrp developer ./developer # изменил группу для папки developer с radif на developer
+sudo chmod g+s developer/ # теперь созданные файлы попадают в группу developer
