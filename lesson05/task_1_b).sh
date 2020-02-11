@@ -9,4 +9,8 @@
 # Проверить скрипт, выполнив ошибочную регистрацию с виртуального терминала.
 
 # Проверить скрипт, выполнив ошибочную регистрацию с виртуального терминала.
-tail -n1 -f /var/log/auth.log | grep FAILED
+LOG_FILE='/var/log/auth.log'
+tail -0f $LOG_FILE | while read i
+do
+	grep FAILED | echo "Ошибка аутентификации"
+done
