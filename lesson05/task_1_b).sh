@@ -9,8 +9,26 @@
 # Проверить скрипт, выполнив ошибочную регистрацию с виртуального терминала.
 
 # Проверить скрипт, выполнив ошибочную регистрацию с виртуального терминала.
-LOG_FILE='/var/log/auth.log'
-tail -0f $LOG_FILE | while read i
-do
-	grep FAILED | echo "Ошибка аутентификации"
-done
+# LOG_FILE='/var/log/auth.log'
+# tail -0f $LOG_FILE | while read i
+# do
+# 	grep FAILED | echo "Ошибка аутентификации"
+# done
+
+# Альтернативное решение:
+LOG=/var/log/auth.log
+
+if [ -e $LOG ]
+then
+        tail -f "${LOG}" | while read i
+        do
+                if [[ $i =~ "FAILED LOGIN" ]]
+                then
+                        echo Ошибка аутентификации
+                        continue
+                fi
+        done
+else
+        echo File not found
+        exit 1
+fi
